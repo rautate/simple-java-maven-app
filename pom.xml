@@ -11,12 +11,12 @@
     <repository>
         <id>central</id>
         <name>artifactory-internship-releases</name>
-        <url>http://192.168.0.84:8081/artifactory/my-app</url>
+        <url>http://192.168.0.84:8081/artifactory</url>
     </repository>
     <snapshotRepository>
         <id>snapshots</id>
         <name>artifactory-internship-snapshots</name>
-        <url>http://192.168.0.84:8081/artifactory/my-app</url>
+        <url>http://192.168.0.84:8081/artifactory</url>
     </snapshotRepository>
 </distributionManagement>
   <dependencies>
