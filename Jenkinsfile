@@ -1,18 +1,7 @@
 pipeline {
      agent any
     stages {
-        stage('Checkout') {
-            steps {
-            checkout scm: [
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/master']], 
-                    userRemoteConfigs: [
-                        [credentialsId: 'dionis-github', 
-                        url: 'https://github.com/rautate/simple-java-maven-app']
-                        ]
-                    ]
-                }
-        }
+        
         stage('Build') { 
             steps {
                 withMaven(jdk: 'java-09', maven: 'jenkins-maven') {
