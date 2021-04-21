@@ -7,7 +7,7 @@ pipeline {
                     $class: 'GitSCM', 
                     branches: [[name: '*/master']], 
                     userRemoteConfigs: [
-                        [credentialsId: 'github_moldovan', 
+                        [credentialsId: 'dionis-github', 
                         url: 'https://github.com/rautate/simple-java-maven-app']
                         ]
                     ]
@@ -15,21 +15,21 @@ pipeline {
         }
         stage('Build') { 
             steps {
-                withMaven(jdk: 'java-default', maven: 'maven-default') {
+                withMaven(jdk: 'java-09', maven: 'jenkins-maven') {
                     sh 'mvn -B -DskipTests clean install'
                 }
             }
         }
         stage('Test') { 
             steps {
-                withMaven(jdk: 'java-default', maven: 'maven-default') {
+                withMaven(jdk: 'java-09', maven: 'jenkins-maven') {
                     sh 'mvn test' 
                 }
             }
         }
         stage('Deploy') { 
             steps {
-                withMaven(jdk: 'java-default', maven: 'maven-default') {
+                withMaven(jdk: 'java-09', maven: 'jenkins-maven') {
                     nexusArtifactUploader artifacts: [
                         [artifactId: 'my-app', 
                         classifier: '', 
